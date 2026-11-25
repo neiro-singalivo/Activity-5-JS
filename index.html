@@ -10,9 +10,10 @@
     <style>
       .title {
         font-weight: bold;
-        text-align: center;
-        margin-top: 20px;
-        font-size: 30px;
+        text-align: left;
+        margin-top: 30px;
+        font-size: 25px;
+        margin-left: 310px;
       }
 
       .expense-card {
@@ -24,7 +25,26 @@
         align-items: left;
         display: flex;
         justify-content: center;
-        margin: 50px auto;
+        margin: 40px auto;
+        border-radius: 24px;
+      }
+
+      .buttonadd {
+        background-color: black;
+        border-radius: 24px;
+        height: 40px;
+        width: 95%;
+        font-size: 18px;
+        margin-left: 15px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      .buttonadd:hover {
+        background-color: rgb(178, 59, 178);
+        color: black;
+        transform: translateY(-3px);
       }
     </style>
   </head>
@@ -93,6 +113,55 @@
           <option value="School" selected>School</option>
           <option value="Personal">Personal</option>
         </select>
+        <button id="addExpenseButton" class="buttonadd">Add Expense +</button>
+        <p id="error" style="color: red; margin: 0 20px 20px"></p>
+      </div>
+    </section>
+    <!-- Filter by category section -->
+    <section>
+      <div class="expense-card">
+        <h1
+          style="
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 20px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+          "
+        >
+          Filter by Category
+        </h1>
+        <select
+          id="filterCategory"
+          name="category"
+          style="
+            margin: 10px auto;
+
+            padding: 5px;
+            width: 95%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+          "
+        >
+          <option value="All" selected>All</option>
+          <option value="Food">Food</option>
+          <option value="Commute">Commute</option>
+          <option value="School">School</option>
+          <option value="Personal">Personal</option>
+        </select>
+        <div id="expenseList" style="margin: 0 20px"></div>
+      </div>
+    </section>
+    <!-- Summary of expenses section -->
+    <section id="Summary">
+      <div class="expense-card">
+        <h2 style="font-size: 24px; font-weight: bold; margin: 20px 20px 10px">
+          Summary of Expenses
+        </h2>
+
+        <p style="margin: 10px 20px 20px; font-weight: bold">
+          Total: <span id="totalAmount">₱0.00</span>
+        </p>
       </div>
     </section>
   </body>
