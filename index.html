@@ -3,7 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Expense tracker</title>
+    <script defer src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Internal stylesheet -->
+    <style>
+      .title {
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 30px;
+      }
+
+      .expense-card {
+        background-color: white;
+        flex-direction: column;
+        color: black;
+        width: 50%;
+        height: auto;
+        align-items: left;
+        display: flex;
+        justify-content: center;
+        margin: 50px auto;
+      }
+    </style>
   </head>
-  <body></body>
+  <!-- background gradient -->
+  <body class="min-h-screen bg-linear-to-b from-purple-300 to-purple-50">
+    <h1 class="title">Mini Expense Tracker</h1>
+    <!-- Add expense section -->
+    <section id="Expense">
+      <div class="expense-card">
+        <h1
+          style="
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 20px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+          "
+        >
+          Add Expense
+        </h1>
+        <h2 style="margin-left: 20px">Title</h2>
+        <input
+          type="text"
+          id="expenseName"
+          placeholder="Expense Name"
+          class="border border-gray-300 rounded px-2 py-1 mb-2 w-full"
+          style="
+            margin: 10px auto;
+
+            padding: 5px;
+            width: 95%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+          "
+        />
+        <h2 style="margin-left: 20px">Amount(₱)</h2>
+        <input
+          type="number"
+          id="expenseAmount"
+          placeholder="0.00"
+          class="border border-gray-300 rounded px-2 py-1 mb-2 w-full"
+          style="
+            margin: 10px auto;
+
+            padding: 5px;
+            width: 95%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+          "
+        />
+        <h2 style="margin-left: 20px">Category</h2>
+        <select
+          id="expenseCategory"
+          name="category"
+          style="
+            margin: 10px auto;
+
+            padding: 5px;
+            width: 95%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+          "
+        >
+          <option value="Food">Food</option>
+          <option value="Commute">Commute</option>
+          <option value="School" selected>School</option>
+          <option value="Personal">Personal</option>
+        </select>
+      </div>
+    </section>
+  </body>
 </html>
