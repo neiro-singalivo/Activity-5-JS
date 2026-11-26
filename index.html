@@ -3,54 +3,147 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expense tracker</title>
+    <title>Expense Tracker VI</title>
     <script defer src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Internal stylesheet -->
     <style>
+      @font-face {
+        font-family: "Pricedown";
+        src: url("assets/Pricedown%20Bl.otf") format("opentype");
+        font-display: swap;
+      }
+
+      .theme {
+        min-height: 100vh;
+        margin: 0;
+        color: #fff8ff;
+        font-family: "Segoe UI", sans-serif;
+        background-color: #17121d;
+        background:
+          linear-gradient(
+            180deg,
+            rgb(17 13 24 / 42%) 0%,
+            rgb(18 13 25 / 75%) 56%,
+            #17121d 100%
+          ),
+          url("https://cdn.mos.cms.futurecdn.net/wJRxvPHcaWuYdDMbqcckyG.jpg")
+            center 35% / cover fixed;
+      }
+
       .title {
+        width: 100%;
+        margin: 38px auto 42px;
+        font-family: "Pricedown", sans-serif;
+        color: #fffaff;
+        font-size: clamp(2rem, 6.5vw, 4.25rem);
         font-weight: bold;
-        text-align: left;
-        margin-top: 30px;
-        font-size: 25px;
-        margin-left: 310px;
+        line-height: 0.95;
+        text-align: center;
+        text-shadow:
+          -3px -3px 0 #32183e,
+          3px -3px 0 #32183e,
+          -3px 3px 0 #32183e,
+          3px 3px 0 #32183e,
+          0 0 14px #ff42bd,
+          0 0 30px rgb(255 117 91 / 72%);
+        text-transform: uppercase;
       }
 
       .expense-card {
-        background-color: white;
-        flex-direction: column;
-        color: black;
-        width: 50%;
+        width: min(560px, calc(100% - 32px));
         height: auto;
-        align-items: left;
+        margin: 24px auto;
+        padding: 24px;
+        border: 1px solid rgb(255 150 220 / 48%);
+        border-radius: 20px;
+        background: rgb(25 17 38 / 88%);
+        box-shadow:
+          0 12px 40px rgb(0 0 0 / 35%),
+          0 0 22px rgb(255 66 189 / 16%);
+        color: #fff8ff;
+        flex-direction: column;
+        align-items: stretch;
         display: flex;
         justify-content: center;
-        margin: 40px auto;
-        border-radius: 24px;
+        backdrop-filter: blur(10px);
+      }
+
+      .expense-card h1,
+      .expense-card h2 {
+        color: #fff4fb;
+      }
+
+      .expense-card input,
+      .expense-card select {
+        box-sizing: border-box;
+        background-color: #fffaff;
+        color: #261b30;
       }
 
       .buttonadd {
-        background-color: black;
-        border-radius: 24px;
-        height: 40px;
+        min-height: 44px;
         width: 95%;
-        font-size: 18px;
         margin-left: 15px;
         margin-top: 10px;
         margin-bottom: 20px;
-        color: white;
+        border: 0;
+        border-radius: 24px;
+        background: linear-gradient(100deg, #ffae67, #ff54b7);
+        color: #24132b;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 800;
+        transition:
+          transform 150ms ease,
+          filter 150ms ease;
       }
 
       .buttonadd:hover {
-        background-color: rgb(178, 59, 178);
-        color: black;
+        filter: brightness(1.1);
         transform: translateY(-3px);
+      }
+
+      .music-toggle {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 10;
+        padding: 10px 16px;
+        border: 1px solid rgb(255 150 220 / 55%);
+        border-radius: 24px;
+        background: rgb(25 17 38 / 92%);
+        color: #fff8ff;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+      }
+
+      .music-toggle:hover {
+        background: #ff54b7;
+        color: #24132b;
+      }
+
+      @media (max-width: 520px) {
+        .title {
+          margin: 32px auto;
+          font-size: clamp(1.5rem, 8vw, 2.5rem);
+        }
+
+        .expense-card {
+          padding: 20px 16px;
+        }
+
+        .buttonadd {
+          width: 100%;
+          margin-left: 0;
+        }
       }
     </style>
   </head>
-  <!-- background gradient -->
-  <body class="min-h-screen bg-linear-to-b from-purple-300 to-purple-50">
-    <h1 class="title">Mini Expense Tracker</h1>
+
+  <body class="theme">
+    <h1 class="title">Expense Tracker</h1>
+    <h1 class="title">VI</h1>
     <!-- Add expense section -->
     <section id="Expense">
       <div class="expense-card">
@@ -164,5 +257,19 @@
         </p>
       </div>
     </section>
+    <button
+      class="music-toggle"
+      id="musicToggle"
+      type="button"
+      aria-pressed="false"
+    >
+      ♫ Enable music
+    </button>
+    <audio
+      id="backgroundMusic"
+      src="assets/background-music.mp3"
+      loop
+      preload="none"
+    ></audio>
   </body>
 </html>

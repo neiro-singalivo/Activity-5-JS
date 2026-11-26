@@ -89,3 +89,45 @@ addBtn.addEventListener("click", () => addExpense());
 filterSelect.addEventListener("change", () => render());
 
 render();
+
+// background music button
+
+const backgroundMusic = document.getElementById("backgroundMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+backgroundMusic.volume = 0.35;
+
+function updateMusicButton() {
+  const isPlaying = !backgroundMusic.paused;
+  musicToggle.textContent = isPlaying ? "♫ Music on · mute" : "♫ Enable music";
+  musicToggle.setAttribute("aria-pressed", String(isPlaying));
+}
+
+async function playMusic() {
+  try {
+    await backgroundMusic.play();
+    updateMusicButton();
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "NotAllowedError") {
+      updateMusicButton();
+      return;
+    }
+
+    musicToggle.textContent = "Music unavailable";
+    musicToggle.disabled = true;
+    console.error("Could not play the background music.", error);
+  }
+}
+
+musicToggle.addEventListener("click", () => {
+  if (backgroundMusic.paused) {
+    playMusic();
+  } else {
+    backgroundMusic.pause();
+    updateMusicButton();
+  }
+});
+
+backgroundMusic.addEventListener("play", updateMusicButton);
+backgroundMusic.addEventListener("pause", updateMusicButton);
+playMusic();
